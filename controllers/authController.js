@@ -16,7 +16,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
         confirmPassword,
         role,
         number,
-        destinations,
+        destination,
     } = req.body;
 
     if (password !== confirmPassword) {
@@ -30,7 +30,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     }
 
     // Find the IDs of the destinations
-    const destinationIds = await Destination.find({ name: { $in: destinations } })
+    const destinationIds = await Destination.find({ name: { $in: destination } })
         .select('_id')
         .exec();
 

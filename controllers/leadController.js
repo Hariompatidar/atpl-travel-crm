@@ -5,10 +5,11 @@ const Quotation = require("../models/Quotation");
 const Destination = require("../models/Destination");
 const ErrorHandler = require("../utils/errorhandler");
 const Comment = require("../models/Comment");
+const Followup = require("../models/Followup");
 
 // Create New Lead
 exports.newLead = catchAsyncErrors(async (req, res, next) => {
-    const { name, email, number, startDate, endDate, destination, adult, kid } =
+    const { name, email, number, startDate, endDate,ticketBooked, destination, adult, kid } =
         req.body;
 
     const dest = await Destination.findOne({ name: destination });
@@ -23,7 +24,7 @@ exports.newLead = catchAsyncErrors(async (req, res, next) => {
     }
 
     let executives = await User.find({
-        role: "executive",
+        role: "sales",
         destination: dest._id,
     });
 
@@ -45,6 +46,7 @@ exports.newLead = catchAsyncErrors(async (req, res, next) => {
             endDate,
         },
         destination: dest._id,
+        ticketBooked,
         person: {
             adult,
             kid,
@@ -143,7 +145,7 @@ exports.acceptLead = catchAsyncErrors(async (req, res, next) => {
     });
 });
 
-// Change the executive on the lead ---- ADMIN
+// Change the sales executive on the lead ---- ADMIN
 exports.changeExecutiveOnLead = catchAsyncErrors(async (req, res, next) => {
     const leadId = req.params.id;
     const newExecutiveId = req.body.newExecutiveId;
@@ -155,12 +157,12 @@ exports.changeExecutiveOnLead = catchAsyncErrors(async (req, res, next) => {
 
     if (lead.executive.toString() === newExecutiveId) {
         return next(
-            new ErrorHandler("Lead already assigned to this executive"),
+            new ErrorHandler("Lead already assigned to this sales executive"),
             400
         );
     }
 
-    // Find the old executive
+    // Find the old sales executive
     const oldExecutive = await User.findById(lead.executive);
     if (oldExecutive) {
         const oldExecutiveIndex = oldExecutive.addedLeads.indexOf(leadId);
@@ -174,7 +176,7 @@ exports.changeExecutiveOnLead = catchAsyncErrors(async (req, res, next) => {
     lead.executive = newExecutiveId;
     lead.isAccepted = false;
 
-    // Find and add the lead to the new executive's addedLeads array
+    // Find and add the lead to the new sales executive's addedLeads array
     const newExecutive = await User.findById(newExecutiveId);
     if (newExecutive) {
         newExecutive.addedLeads.push(leadId);
@@ -186,7 +188,7 @@ exports.changeExecutiveOnLead = catchAsyncErrors(async (req, res, next) => {
 
     res.status(200).json({
         success: true,
-        message: "Executive on the lead changed successfully",
+        message: "Sales executive on the lead changed successfully",
     });
 });
 
@@ -356,8 +358,6 @@ exports.deleteComment = catchAsyncErrors(async (req, res, next) => {
         message: "Comment deleted successfully",
     });
 });
-
-const Followup = require("../models/followupModel"); // Import your Followup model
 
 // Create a new follow-up or add more follow-up
 exports.createOrAddFollowup = catchAsyncErrors(async (req, res) => {

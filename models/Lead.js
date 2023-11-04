@@ -28,6 +28,10 @@ const leadSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        ticketBooked:{
+            type: Boolean,
+            default: false,
+        },
         person: {
             adult: {
                 type: Number,

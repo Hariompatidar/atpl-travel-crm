@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema(
         },
         role: {
             type: String,
-            enum: ["admin", "executive", "operation", "accounts"],
+            enum: ["admin", "sales", "operation", "accounts"],
             required: [true, "Role is required"],
         },
         profileImage: {

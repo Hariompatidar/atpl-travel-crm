@@ -4,7 +4,7 @@ const router= express.Router();
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 
 
-router.route('/lead/new').post(newLead);
+router.route('/newLead').post(newLead);
 router.route('/leads').get(isAuthenticatedUser,authorizeRoles("admin"),getAllLeads);
 
 router.route('/lead/:id').get(getLead).delete(isAuthenticatedUser, authorizeRoles('dmin'), deleteLead);
