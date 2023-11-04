@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+.active{
+    background-color: #101215;
+}
+
+.smallGradient{
+    width: 228px;
+    height: 400px;
+    transform: rotate(-14deg);
+    background: #1F1CA7;
+    opacity: 0.5;
+    border-radius: 50%;
+    filter: blur(200px);
+    top: 30%;
+    left:-10%;
+    overflow: hidden;
+}
+.bigGradient{
+    width: 60%;
+    height: 60%;
+    transform: rotate(-14deg);
+    background: #1F1CA7;
+    opacity: 0.5;
+    border-radius: 50%;
+    filter: blur(300px);
+    top: 20%;
+    right: 0%;
+    overflow:hidden
+}
+
+.smallCard {
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(10.399999618530273px);
+}
+
+.blurcard{
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(10.399999618530273px);
+}
+.blurfull{
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(10.399999618530273px);
+}
+
+.blurbg{
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(10.399999618530273px);
+}
+.blurbg:hover{
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.inputbox{
+    padding: 8px 16px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(10.399999618530273px);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+}
+.inputbox:hover{
+    border: 1px solid rgba(0,0,0, 0.04);
+}
+
+.borderRight{
+    border-right: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.borderTop{
+    border-top: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.lineheight{
+    line-height: 56px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.borderBottom{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+
+
