@@ -4,6 +4,8 @@ const initialState = {
   loading: false,
   token: localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")) : "this is token babe..",
   user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {name:"hariom", role:"admin"},
+  // token: localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")) : null,
+  // user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null,
 };
 
 const authSlice = createSlice({

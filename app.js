@@ -10,6 +10,17 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(fileUpload());
 
+const cors = require('cors');
+
+// Enable CORS
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  })
+);
+
 // adding the routes with path mounting
 app.use('/api/v1',userRoutes);
 app.use('/api/v1', destinationRoutes);

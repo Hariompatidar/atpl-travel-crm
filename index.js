@@ -37,18 +37,8 @@
 const app = require('./app');
 const { dbconnect } = require('./config/database');
 require('dotenv').config();
-const cors = require('cors');
 
-// Enable CORS
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
 
-// Handling preflight requests
-app.options('*', cors());
 
 // Handling Uncaught Exception
 process.on("uncaughtException", (err) => {

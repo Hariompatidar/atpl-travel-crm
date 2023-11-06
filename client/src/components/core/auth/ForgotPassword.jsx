@@ -3,11 +3,12 @@ import { BiArrowBack } from "react-icons/bi"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { getPasswordResetToken } from "../../../services/operations/authAPI"
+import { MdOutlineMailOutline } from "react-icons/md"
 
 
 function ForgotPassword() {
   const [email, setEmail] = useState("hariom@gmail.com")
-  const [emailSent, setEmailSent] = useState(true)
+  const [emailSent, setEmailSent] = useState(false)
   const dispatch = useDispatch()
   const { loading } = useSelector((state) => state.auth)
 
@@ -36,6 +37,7 @@ function ForgotPassword() {
                 <p className="mb-1 text-[0.875rem] leading-[1.375rem]">
                   Email Address <sup className="text-red-400">*</sup>
                 </p>
+                <div className="relative">
                 <input
                   required
                   type="email"
@@ -45,6 +47,8 @@ function ForgotPassword() {
                   placeholder="Enter email address"
                   className="inputbox w-full"
                 />
+      <MdOutlineMailOutline className='icon'/>
+      </div>
               </label>
             )}
             <button

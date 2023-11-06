@@ -9,7 +9,7 @@ const AnaCountSmallCard = ({heading,number,btntxt,btncolor}) => {
        <p className='text-[1.5vmax] font-medium'>{heading}</p>
         <p className='text-[3vmax] font-semibold'>{number}</p>
         <div className={`${btncolor} p-2 rounded-md max-w-max`}>{btntxt}</div>
-        <img src={Graphpng} alt='graph' loading='lazy' width={80} className='absolute right-3 bottom-3'/>
+        <img src={Graphpng} alt='graph' loading='lazy' className='absolute right-3 bottom-4 w-[7vmax] max-sm:hidden'/>
     </Link>
   )
 }

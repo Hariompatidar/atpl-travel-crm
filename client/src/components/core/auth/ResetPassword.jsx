@@ -4,6 +4,7 @@ import { BiArrowBack } from "react-icons/bi"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { resetPassword } from "../../../services/operations/authAPI"
+import { MdOutlineLock } from "react-icons/md"
 
 
 function ResetPassword() {
@@ -39,7 +40,7 @@ function ResetPassword() {
       {loading ? (
         <div className="spinner">Loading...</div>
       ) : (
-        <div className="max-w-[500px] p-4 lg:p-8">
+        <div className="blurcard max-w-[500px] p-4 lg:p-8">
           <h1 className="text-[1.875rem] font-semibold leading-[2.375rem]">
             Choose new password
           </h1>
@@ -51,6 +52,7 @@ function ResetPassword() {
               <p className="mb-1 text-[0.875rem] leading-[1.375rem]">
                 New Password <sup className="text-pink-200">*</sup>
               </p>
+              <div className="relative">
               <input
                 required
                 type={showPassword ? "text" : "password"}
@@ -60,9 +62,10 @@ function ResetPassword() {
                 placeholder="Enter Password"
                 className="inputbox w-full !pr-10"
               />
+      <MdOutlineLock className='icon'/>
               <span
                 onClick={() => setShowPassword((prev) => !prev)}
-                className="absolute right-3 top-[38px] z-[10] cursor-pointer"
+                className="absolute right-3 top-[10px] z-[10] cursor-pointer"
               >
                 {showPassword ? (
                   <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
@@ -70,11 +73,13 @@ function ResetPassword() {
                   <AiOutlineEye fontSize={24} fill="#AFB2BF" />
                 )}
               </span>
+              </div>
             </label>
             <label className="relative mt-3 block">
               <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
                 Confirm New Password <sup className="text-pink-200">*</sup>
               </p>
+              <div className="relative"> 
               <input
                 required
                 type={showConfirmPassword ? "text" : "password"}
@@ -84,9 +89,10 @@ function ResetPassword() {
                 placeholder="Confirm Password"
                 className="inputbox w-full !pr-10"
               />
+      <MdOutlineLock className='icon'/>
               <span
                 onClick={() => setShowConfirmPassword((prev) => !prev)}
-                className="absolute right-3 top-[38px] z-[10] cursor-pointer"
+                className="absolute right-3 top-[10px] z-[10] cursor-pointer"
               >
                 {showConfirmPassword ? (
                   <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
@@ -94,6 +100,7 @@ function ResetPassword() {
                   <AiOutlineEye fontSize={24} fill="#AFB2BF" />
                 )}
               </span>
+              </div>
             </label>
 
             <button

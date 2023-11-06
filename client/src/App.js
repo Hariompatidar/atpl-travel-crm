@@ -16,55 +16,38 @@ import DashboardLayout from "./components/core/layout/DashboardLayout";
 import Destinations from "./components/core/admin/Destinations";
 import AllLeads from "./components/core/admin/AllLeads";
 import TodaysLeads from "./components/core/admin/TodaysLeads";
+import HomeLayout from "./components/core/layout/HomeLayout";
 
 function App() {
     const { user } = useSelector((state) => state.auth);
 
     return (
-        <div className="w-full h-full min-h-screen text-white bg-[#141519]">
+        <div className="w-full h-full min-h-screen text-white bg-[#14151B]">
             {/* gradient div  */}
             <div className="smallGradient absolute"></div>
             <div className="bigGradient absolute"></div>
 
             <Routes>
                 <Route
-                    path="/"
                     element={
                         <OpenRoute>
-                            <Home />
+                            <HomeLayout />
                         </OpenRoute>
                     }
-                />
-                <Route
-                    path="/login"
-                    element={
-                        <OpenRoute>
-                            <Login />
-                        </OpenRoute>
-                    }
-                />
-                <Route
-                    path="/forgotPassword"
-                    element={
-                        <OpenRoute>
-                            <ForgotPassword />
-                        </OpenRoute>
-                    }
-                />
-                <Route
-                    path="/resetPassword"
-                    element={
-                        <OpenRoute>
-                            <ResetPassword />
-                        </OpenRoute>
-                    }
-                />
+                >
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route
+                        path="/forgotPassword"
+                        element={<ForgotPassword />}
+                    />
+                    <Route path="/resetPassword" element={<ResetPassword />} />
+                </Route>
+
                 <Route
                     path="/newLead"
                     element={
-                        <OpenRoute>
                             <NewLeadForm />
-                        </OpenRoute>
                     }
                 />
 
@@ -80,10 +63,15 @@ function App() {
                         <>
                             <Route path="/myteam" element={<MyTeam />} />
                             <Route path="/signup" element={<Signup />} />
-                            <Route path="/destinations" element={<Destinations />} />
+                            <Route
+                                path="/destinations"
+                                element={<Destinations />}
+                            />
                             <Route path="/allLeads" element={<AllLeads />} />
-                            <Route path="/todaysLeads" element={<TodaysLeads />} />
-                            
+                            <Route
+                                path="/todaysLeads"
+                                element={<TodaysLeads />}
+                            />
                         </>
                     )}
                 </Route>
